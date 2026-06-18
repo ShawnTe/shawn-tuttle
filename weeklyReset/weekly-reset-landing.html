@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Weekly Reset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ---- Reset & Base ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #0B7978;
+      --burgundy:   #811638;
+      --cream:      #F8F3EC;
+      --gold:       #FCB632;
+      --orange:     #F27238;
+      --dark:       #2E2A28;
+      --teal-light: #e4f0f0;
+      --cream-dark: #ede6db;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* ---- Typography ---- */
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      line-height: 1.2;
+    }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); font-family: 'DM Sans', sans-serif; font-weight: 600; }
+
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ---- Layout ---- */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 80px 0; }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary {
+      background-color: var(--orange);
+      color: #fff;
+    }
+
+    /* ---- Top Bar ---- */
+    .topbar {
+      background-color: var(--teal);
+      color: #fff;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- Hero — full-bleed image left, text right ---- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 92vh;
+    }
+
+    .hero-image {
+      position: relative;
+      background-color: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder shown when no real image is present */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--teal);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .img-placeholder svg { opacity: 0.3; }
+
+    .img-placeholder p {
+      font-size: 0.82rem;
+      opacity: 0.45;
+      font-style: italic;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 56px 72px 60px;
+      background-color: var(--cream);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      align-self: flex-start;
+    }
+
+    .hero-content h1 {
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--dark);
+      opacity: 0.85;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .hero-cta-note {
+      display: block;
+      font-size: 0.85rem;
+      color: #6b6460;
+      margin-top: 12px;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background-color: var(--gold);
+      border-radius: 2px;
+      margin-top: 48px;
+    }
+
+    /* ---- Opening / Hook ---- */
+    .hook {
+      background-color: #fff;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .hook h2 {
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .hook-lead {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--teal);
+      border-left: 4px solid var(--gold);
+      padding-left: 16px;
+      margin: 28px 0;
+    }
+
+    /* ---- Who It's For ---- */
+    .who {
+      background-color: var(--cream);
+    }
+
+    .who h2 {
+      color: var(--teal);
+      margin-bottom: 28px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+    }
+
+    .check-list li {
+      padding: 10px 0 10px 32px;
+      position: relative;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .check-list li:last-child { border-bottom: none; }
+
+    .check-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* ---- Inside Each Session — with mid-page image ---- */
+    .inside {
+      background-color: var(--teal);
+      color: #fff;
+    }
+
+    .inside h2 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .inside-sub {
+      opacity: 0.85;
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+
+    .inside-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .session-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .session-list li {
+      padding: 12px 0 12px 28px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.97rem;
+    }
+
+    .session-list li:last-child { border-bottom: none; }
+
+    .session-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .session-list li strong {
+      display: block;
+      font-weight: 600;
+    }
+
+    .session-list li span {
+      opacity: 0.7;
+      font-size: 0.88rem;
+      font-style: italic;
+    }
+
+    .inside-image {
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: rgba(255,255,255,0.08);
+    }
+
+    .inside-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .inside-image .img-placeholder {
+      min-height: 340px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ---- What Makes This Different ---- */
+    .different {
+      background-color: var(--cream);
+    }
+
+    .different h2 {
+      color: var(--burgundy);
+      margin-bottom: 24px;
+    }
+
+    .not-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 28px;
+      border-left: 4px solid var(--burgundy);
+      padding-left: 24px;
+    }
+
+    .not-list li {
+      padding: 5px 0;
+      font-style: italic;
+      color: #5a5552;
+    }
+
+    .shift-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .shift-item {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 16px 18px;
+      font-size: 0.92rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ---- Group Agreements ---- */
+    .agreements {
+      background-color: #fff;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .agreements h2 {
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .agreements-sub {
+      font-size: 1rem;
+      color: #6b6460;
+      margin-bottom: 32px;
+    }
+
+    .agreement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .agreement-item {
+      background-color: var(--teal-light);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--teal);
+    }
+
+    /* ---- Beta Details / Pricing ---- */
+    .pricing {
+      background-color: var(--cream);
+      text-align: center;
+    }
+
+    .pricing h2 {
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .pricing-intro {
+      max-width: 480px;
+      margin: 0 auto 40px;
+      color: #6b6460;
+    }
+
+    .price-card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 48px 48px;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: 0 4px 40px rgba(11,121,120,0.1);
+      border: 2px solid var(--teal-light);
+      text-align: center;
+    }
+
+    .price-badge {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .price-amount {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-amount span {
+      font-size: 2rem;
+      vertical-align: super;
+    }
+
+    .price-desc {
+      font-size: 0.95rem;
+      color: #6b6460;
+      margin-bottom: 28px;
+    }
+
+    .price-includes {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      text-align: left;
+    }
+
+    .price-includes li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .price-includes li:last-child { border-bottom: none; }
+
+    .price-includes li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: #6b6460;
+      margin-top: 16px;
+    }
+
+    /* ---- Final CTA ---- */
+    .final-cta {
+      background-color: var(--burgundy);
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .final-cta h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .final-cta p {
+      opacity: 0.88;
+      font-size: 1.1rem;
+      max-width: 460px;
+      margin: 0 auto 40px;
+    }
+
+    .final-cta-note {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      background-color: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.8); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 800px) {
+      .inside-layout {
+        grid-template-columns: 1fr;
+      }
+      .inside-image { position: static; }
+      .shift-list { grid-template-columns: 1fr; }
+      .agreement-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { min-height: 280px; }
+      .hero-content { padding: 52px 28px; }
+      .price-card { padding: 32px 24px; }
+      .price-amount { font-size: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Notice Bar -->
+  <div style="
+    background: #811638;
+    color: rgba(255,255,255,0.90);
+    text-align: center;
+    padding: 22px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  ">
+    The beta Weekly Reset has happened. &nbsp;Come check out the next iteration&mdash;
+    <a href="../weeklyAlignment/weekly-alignment.html" style="
+      color: #6B9B9C;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(107,155,156,0.4);
+      transition: border-color 0.2s;
+    ">The Weekly Alignment &rarr;</a>
+  </div>
+
+  <!-- Hero — image left, text right -->
+  <div class="hero">
+
+    <div class="hero-image">
+      <img src="path.jpg" alt="" style="transform: rotate(-90deg); transform-origin: center center; width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">The Weekly Reset · Beta</span>
+      <h1>Get out of<br>mental swirl.<br><em>Come back to yourself.</em></h1>
+      <p class="hero-tagline">
+        A reflective weekly space to return to clarity, forward movement, and self-trust.
+      </p>
+      <div style="text-align:center; align-self:center;">
+        <span class="btn btn-primary" style="opacity:0.4; cursor:default; pointer-events:none;">Join the Weekly Reset</span>
+        <span class="hero-cta-note" style="display:block; margin-top:10px;">This beta round has closed.</span>
+      </div>
+      <div class="hero-divider"></div>
+    </div>
+
+  </div>
+
+  <!-- Hook / Opening -->
+  <section class="hook">
+    <div class="container">
+      <h2>When life feels noisy, full, or slightly off-track…</h2>
+      <p class="hook-lead">…it's easy to lose the thread.</p>
+      <p>Not because you're lazy or incapable. But because you're holding a lot, and there isn't often space to pause long enough to hear yourself again.</p>
+      <p class="tagline">
+        The Weekly Reset is a small-group space to do exactly that.
+      </p>
+      <p>Each week, we'll slow down, reflect honestly, reconnect with what matters most, and identify a clear, supportive path forward.</p>
+      <p>This isn't about doing the week perfectly.<br>It's about getting better at returning.</p>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="who">
+    <div class="container">
+      <h2>This is for you if…</h2>
+      <ul class="check-list">
+        <li>You've been doing a lot, but not always moving what matters most</li>
+        <li>You want a rhythm of reflection, clarity, and self-trust</li>
+        <li>Your brain feels full and scattered by the time the week starts</li>
+        <li>You tend to drift, avoid, override yourself, or wait until things feel urgent</li>
+        <li>You want support that feels real and spacious — not performative or overwhelming</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Inside Each Session -->
+  <section class="inside">
+    <div class="container">
+      <h2>Inside The Weekly Reset…</h2>
+      <p class="inside-sub">you’ll have space to slow down, take stock, and come back to yourself.</p>
+
+      <div class="inside-image" style="float: right; margin: 0 0 20px 36px; width: 240px;">
+        <img src="flower.jpg" alt="" style="width:100%; display:block; border-radius: 10px;" />
+      </div>
+      <div style="text-align:center; font-style:italic;">
+        <p style="margin-bottom:1.2em;">To notice what’s been swirling.</p>
+        <p style="margin-bottom:1.2em;">To acknowledge what’s working.</p>
+        <p style="margin-bottom:1.2em;">To get honest about what feels hard or unclear.</p>
+        <p style="margin-bottom:1.2em;">To remember what matters most.</p>
+        <p style="margin-bottom:1.2em;">And to leave with a clearer sense of what’s yours to<br>carry into the week ahead.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </section>
+
+  <!-- What Makes This Different -->
+  <section class="different">
+    <div class="container">
+      <h2>What makes this different</h2>
+      <p>This is not a productivity sprint, accountability group, or traditional coaching call.</p>
+      <p>It's a guided weekly practice of:</p>
+      <ul class="not-list">
+        <li>remembering yourself</li>
+        <li>noticing when you've drifted</li>
+        <li>reconnecting with your own clarity</li>
+        <li>and moving forward from a more honest place</li>
+      </ul>
+      <p>In other words:</p>
+      <ul class="not-list">
+        <li>less spiraling, more returning</li>
+        <li>less pressure, more clarity</li>
+        <li>less "I should be doing better," more self-trust</li>
+        <li>less reacting, more forward movement</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Group Agreements -->
+  <section class="agreements">
+    <div class="container">
+      <h2>How we hold the space</h2>
+      <p class="agreements-sub">A few simple agreements that keep the room safe and real.</p>
+      <div class="agreement-grid">
+        <div class="agreement-item">Come as you are</div>
+        <div class="agreement-item">Tell the truth, gently</div>
+        <div class="agreement-item">Take what helps</div>
+        <div class="agreement-item">Leave room for others</div>
+        <div class="agreement-item">You can always pass</div>
+        <div class="agreement-item">What's shared here stays here</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How I Guide -->
+  <section class="hook" style="background-color: var(--teal); color: #fff;">
+    <div class="container">
+      <h2 style="color: #fff; margin-bottom: 24px;">How I guide</h2>
+      <div style="border-radius: 10px; overflow: hidden; float: right; margin: 0 0 20px 36px; width: 240px;">
+        <img src="shawn.jpg" alt="" style="width:100%; display:block;" />
+      </div>
+      <p>I'll be guiding each session. I bring a mix of structure and reflection — so you're not left spinning, but you're also not being told what to do. The goal is to help you hear yourself more clearly and move from there.</p>
+      <p>I’d love to have you there. — Shawn</p>
+      <div style="clear:both;"></div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="container">
+      <h2>Beta details</h2>
+      <p class="pricing-intro">This first beta round will be small, early, and collaborative — a chance to experience the process in an intimate group and help shape what it becomes.</p>
+
+      <div class="price-card">
+        <span class="price-badge">Beta Price (I know, it's crazy!)</span>
+        <div class="price-amount"><span>$</span>111</div>
+        <p class="price-desc">for the full 4-week live experience</p>
+        <ul class="price-includes">
+          <li>4 live sessions: April 6, 13, 20 + 27</li>
+          <li>Mondays, 10:00–11:00 AM Pacific</li>
+          <li>Live on Google Meet</li>
+          <li>Limited to 4–6 people</li>
+          <li>Fully guided each session</li>
+        </ul>
+        <span class="btn btn-primary" style="width:100%; text-align:center; display:block; opacity:0.4; cursor:default; pointer-events:none;">Join Weekly Reset Beta</span>
+        <p class="price-note">Your feedback and participation will help shape this into something lasting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>If this sounds like the space you've been needing…</h2>
+      <p>I'd love to have you join us.</p>
+      <span class="btn btn-primary" style="font-size:1.05rem; padding: 17px 40px; opacity:0.4; cursor:default; pointer-events:none;">Join the Beta</span>
+      <span class="final-cta-note">This beta round has closed.</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>The Weekly Reset</strong> · Beta Round · April 6</p>
+  </footer>
+
+</body>
+</html>

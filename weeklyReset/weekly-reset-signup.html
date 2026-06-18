@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Weekly Reset Beta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #0B7978;
+      --burgundy:   #811638;
+      --cream:      #F8F3EC;
+      --gold:       #FCB632;
+      --orange:     #F27238;
+      --dark:       #2E2A28;
+      --teal-light: #e4f0f0;
+      --cream-dark: #ede6db;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 860px;
+      width: 100%;
+      box-shadow: 0 8px 48px rgba(11,121,120,0.12);
+    }
+
+    /* ---- Image Side ---- */
+    .card-image {
+      position: relative;
+      background-color: #fff;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-image img {
+      display: block;
+      display: block;
+    }
+
+    /* Placeholder shown when no image is present */
+    .card-image:not(:has(img)) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--teal);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--teal);
+      padding: 40px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-placeholder svg {
+      opacity: 0.35;
+    }
+
+    .image-placeholder p {
+      font-size: 0.85rem;
+      opacity: 0.5;
+      font-style: italic;
+    }
+
+    /* ---- Form Side ---- */
+    .card-form {
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-eyebrow {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .card-form h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      color: var(--teal);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .card-form h1 em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+
+    .form-sub {
+      font-size: 0.92rem;
+      color: #6b6460;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--dark);
+      background-color: var(--cream);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(11,121,120,0.1);
+      background-color: #fff;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background-color: var(--teal-light);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 28px;
+      cursor: pointer;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      accent-color: var(--teal);
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      cursor: pointer;
+    }
+
+    .checkbox-label strong {
+      display: block;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 2px;
+    }
+
+    .checkbox-label span {
+      color: #5a7a7a;
+      font-size: 0.85rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(242,114,56,0.35);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 14px;
+    }
+
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background-color: var(--teal);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 640px) {
+      .card {
+        grid-template-columns: 1fr;
+      }
+      .card-image {
+        min-height: 220px;
+      }
+      .card-form {
+        padding: 36px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- Image -->
+    <div class="card-image">
+      <img src="reset-button-v1.png" alt="" style="width: 323px; height: 360px;" />
+    </div>
+
+    <!-- Form -->
+    <div class="card-form">
+      <span class="form-eyebrow">Beta — April 2026</span>
+      <h1>Join <em>The Weekly Reset</em></h1>
+
+      <form name="weekly-reset-signup" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="weekly-reset-signup" />
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="First name is fine" autocomplete="given-name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+
+        <button type="submit" class="btn-submit">Yes! I want to join The Weekly Reset</button>
+        <p class="form-note">You'll receive payment details by email after signing up.</p>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast">You're in! Next steps will arrive soon via email.</div>
+
+  <script>
+    const form = document.querySelector('form');
+    const toast = document.getElementById('toast');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      await fetch('/', { method: 'POST', body: data });
+      form.reset();
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    });
+  </script>
+
+</body>
+</html>

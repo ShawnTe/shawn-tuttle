@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Weekly Alignment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+
+/* ─────────────────────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────────────────────── */
+:root {
+  --bg:          #FAF8F5;
+  --bg-warm:     #F5EFE6;
+  --bg-card:     #FFFFFF;
+  --bg-dark:     #2C2520;
+
+  --ink:         #3A322C;
+  --ink-mid:     #6B5E55;
+  --ink-soft:    #9A8E86;
+  --ink-white:   rgba(255,255,255,0.90);
+  --ink-white-m: rgba(255,255,255,0.65);
+
+  --sage:        #6B9B9C;
+  --sage-light:  #EDF4F4;
+  --sage-mid:    #4F8485;
+  --sage-pale:   #F4F9F9;
+
+  --gold:        #C4964A;
+  --gold-light:  #FBF3E4;
+
+  --border:      rgba(58,50,44,0.10);
+  --border-soft: rgba(58,50,44,0.06);
+  --shadow-sm:   0 1px 4px rgba(58,50,44,0.07);
+  --shadow-md:   0 4px 24px rgba(58,50,44,0.10);
+  --shadow-lg:   0 12px 48px rgba(58,50,44,0.12);
+
+  --nav-h:       66px;
+  --r:           14px;
+  --r-sm:        8px;
+  --max:         700px;
+  --max-wide:    960px;
+  --gap:         clamp(48px, 6vw, 72px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.15;
+  font-weight: 500;
+}
+h1   { font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
+h2   { font-size: clamp(2rem, 4vw, 3rem); }
+h3   { font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 500; }
+h4   { font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif; }
+
+p    { margin-bottom: 1em; max-width: 58ch; }
+p:last-child { margin-bottom: 0; }
+em   { font-style: italic; }
+strong { font-weight: 600; }
+
+/* ─────────────────────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────────────────────── */
+.wrap      { max-width: var(--max);      margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.wrap-wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+section { padding: var(--gap) 0; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   BUTTON
+───────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:focus-visible { outline: 2px solid var(--sage); outline-offset: 4px; }
+.btn:hover         { transform: translateY(-2px); }
+
+.btn-sage {
+  background: var(--sage);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(107,155,156,0.35);
+}
+.btn-sage:hover { background: var(--sage-mid); box-shadow: 0 8px 28px rgba(107,155,156,0.4); }
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+.btn-ghost {
+  background: rgba(107,155,156,0.12);
+  color: var(--sage-mid);
+}
+.btn-ghost:hover { background: rgba(107,155,156,0.2); }
+
+/* ─────────────────────────────────────────────────────────────
+   DIVIDER LINE
+───────────────────────────────────────────────────────────── */
+.rule {
+  width: 40px; height: 1.5px;
+  background: var(--sage);
+  border: none;
+  margin: 28px 0;
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 300;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+.nav.is-scrolled {
+  background: rgba(250,248,245,0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-inner {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 clamp(20px,5vw,40px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+.nav-logo:hover { color: #fff; }
+.nav.is-scrolled .nav-logo { color: var(--ink); }
+.nav.is-scrolled .nav-logo:hover { color: var(--sage); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+.nav-links a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  border-radius: var(--r-sm);
+  transition: color 0.3s, background 0.15s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 14px; right: 14px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.is-active { color: #fff; }
+.nav-links a.is-active::after,
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+
+/* Once scrolled, switch to dark text */
+.nav.is-scrolled .nav-links a               { color: var(--ink-mid); }
+.nav.is-scrolled .nav-links a:hover,
+.nav.is-scrolled .nav-links a.is-active     { color: var(--sage-mid); }
+.nav.is-scrolled .nav-links a:focus-visible { outline-color: var(--sage); }
+
+/* hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: var(--r-sm);
+}
+.nav-toggle:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
+.nav-toggle span {
+  display: block;
+  height: 1.5px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease, background 0.3s ease;
+}
+.nav.is-scrolled .nav-toggle span { background: var(--ink); }
+.nav-toggle span:nth-child(2) { width: 70%; }
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 100%; }
+
+/* mobile menu */
+.nav-mobile {
+  position: fixed;
+  inset: var(--nav-h) 0 auto;
+  background: rgba(250,248,245,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px clamp(20px,5vw,40px) 28px;
+  z-index: 299;
+  display: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-mobile.is-open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-mobile ul { list-style: none; }
+.nav-mobile a {
+  display: block;
+  padding: 13px 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-soft);
+  transition: color 0.15s, padding-left 0.2s;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { color: var(--sage); padding-left: 14px; }
+
+/* ─────────────────────────────────────────────────────────────
+   FADE-IN ON SCROLL
+───────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─────────────────────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+
+/* Photo background */
+.hero-bg {
+  position: absolute;
+  inset: -20% 0 -20%;        /* extra vertical room for parallax travel */
+  z-index: 0;
+  will-change: transform;
+  background-image: url('mug.jpeg');
+  background-size: cover;
+  background-position: center 30%;
+}
+/* Dark gradient overlay — keeps text readable over any photo */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(28, 22, 18, 0.58) 0%,
+    rgba(28, 22, 18, 0.35) 50%,
+    rgba(28, 22, 18, 0.55) 100%
+  );
+}
+/* Subtle warm tint layer */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 15% 85%, rgba(196,150,74,0.18) 0%, transparent 60%);
+}
+
+/* Floating perspective layers */
+.hero-layer {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  pointer-events: none;
+}
+.hero-layer-1 {
+  width: 700px; height: 280px;
+  top: 28%; left: -8%;
+  background: linear-gradient(90deg, rgba(107,155,156,0.10), transparent);
+  filter: blur(48px);
+  border-radius: 50%;
+}
+.hero-layer-2 {
+  width: 500px; height: 200px;
+  top: 46%; right: -5%;
+  background: linear-gradient(270deg, rgba(196,150,74,0.10), transparent);
+  filter: blur(40px);
+  border-radius: 50%;
+}
+.hero-layer-3 {
+  width: 300px; height: 300px;
+  top: 8%; right: 12%;
+  background: radial-gradient(circle, rgba(107,155,156,0.08) 0%, transparent 65%);
+  filter: blur(24px);
+}
+
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 18px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 80px clamp(20px,5vw,40px) 110px;
+}
+.hero h1 {
+  color: #fff;
+  margin-bottom: 28px;
+  max-width: 16em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+}
+.hero h1 em { color: rgba(255,255,255,0.75); font-style: italic; }
+.hero-sub {
+  font-size: 1.12rem;
+  color: rgba(255,255,255,0.78);
+  max-width: 46ch;
+  margin-bottom: 44px;
+  line-height: 1.7;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: clamp(20px,5vw,40px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  animation: drift 2.8s ease-in-out infinite;
+}
+.hero-scroll:hover { opacity: 1; }
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+.hero-scroll svg { flex-shrink: 0; }
+
+/* ─────────────────────────────────────────────────────────────
+   PROBLEM — "too much in the head"
+───────────────────────────────────────────────────────────── */
+.problem {
+  background: var(--bg);
+  position: relative;
+}
+/* subtle texture suggestion */
+.problem::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 40% 30% at 90% 20%, rgba(107,155,156,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 25% at 5%  75%, rgba(196,150,74,0.07)  0%, transparent 65%);
+  pointer-events: none;
+}
+.problem h2 { color: var(--ink); margin-bottom: 8px; }
+.problem-intro { color: var(--ink-mid); margin-bottom: 40px; font-size: 1.05rem; }
+
+.dot-list { list-style: none; padding: 0; position: relative; z-index: 1; }
+.dot-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+.dot-list li:last-child { border-bottom: none; }
+.dot-list li::before {
+  content: '';
+  display: block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0.6;
+  margin-top: 9px;
+  justify-self: center;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SHIFT — "things open up"
+───────────────────────────────────────────────────────────── */
+.shift {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--sage-pale) 100%);
+}
+.shift h2 { color: var(--ink); margin-bottom: 8px; }
+.shift-intro { color: var(--ink-mid); margin-bottom: 44px; font-size: 1.05rem; }
+
+.shift-list { list-style: none; padding: 0; display: grid; gap: 4px; }
+.shift-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  color: var(--ink-mid);
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.97rem;
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.shift-item.is-visible { opacity: 1; transform: translateX(0); }
+.shift-item:last-child  { border-bottom: none; }
+.shift-arrow {
+  font-size: 0.9rem;
+  color: var(--sage);
+  justify-self: center;
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   OFFER INTRO
+───────────────────────────────────────────────────────────── */
+.offer-intro {
+  background: var(--sage-pale);
+}
+.offer-intro h2 { color: var(--ink); margin-bottom: 32px; max-width: 14em; }
+
+.offer-container {
+  background: var(--bg-card);
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  padding: clamp(32px, 5vw, 52px);
+  box-shadow: var(--shadow-sm);
+}
+.offer-body { font-size: 1rem; color: var(--ink-mid); margin-bottom: 32px; }
+.offer-body p { max-width: none; }
+
+.steps-list { list-style: none; padding: 0; display: grid; gap: 1px; }
+.step-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-soft);
+  align-items: center;
+}
+.step-item:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--sage);
+  line-height: 1;
+  opacity: 0.7;
+}
+.step-text h4   { font-size: 0.97rem; color: var(--ink); margin-bottom: 6px; }
+.step-text p    { font-size: 0.91rem; color: var(--ink-mid); margin: 0 0 10px; max-width: none; }
+.step-bullets {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+.step-bullets li {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+.step-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0.55;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WHY LIVE MATTERS
+───────────────────────────────────────────────────────────── */
+.why-live { background: var(--bg); }
+.why-live h2 { color: var(--ink); margin-bottom: 32px; }
+.why-live-body { font-size: 1rem; color: var(--ink-mid); }
+.why-live-body p { max-width: 52ch; }
+
+.pull-quote {
+  margin: 44px 0;
+  padding: 28px 32px;
+  background: var(--sage-light);
+  border-radius: var(--r);
+  border-left: 3px solid var(--sage);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sage-mid);
+  line-height: 1.4;
+  max-width: 42ch;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WHAT YOU GET
+───────────────────────────────────────────────────────────── */
+.what-you-get { background: var(--bg-warm); }
+.what-you-get h2 { color: var(--ink); margin-bottom: 36px; }
+
+.get-list { list-style: none; padding: 0; }
+.get-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--ink-mid);
+}
+.get-list li:last-child { border-bottom: none; }
+.get-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--sage-light);
+  border: 1.5px solid rgba(107,155,156,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  color: var(--sage-mid);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BENEFITS
+───────────────────────────────────────────────────────────── */
+.benefits {
+  background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg) 100%);
+}
+.benefits h2 { color: var(--ink); margin-bottom: 8px; }
+.benefits-sub { color: var(--ink-mid); margin-bottom: 52px; font-size: 1.05rem; }
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  padding: clamp(24px, 3.5vw, 36px);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.benefit-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.benefit-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.benefit-body { list-style: none; padding: 0; display: grid; gap: 10px; }
+.benefit-body li {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+.benefit-body li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOW THIS FITS
+───────────────────────────────────────────────────────────── */
+.how-fits { background: var(--bg); }
+.how-fits h2 { color: var(--ink); margin-bottom: 28px; }
+.how-fits-body { font-size: 1rem; color: var(--ink-mid); }
+.how-fits-body p { max-width: 52ch; }
+.how-fits-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+  max-width: 52ch;
+}
+
+.how-fits-callout {
+  margin-top: 36px;
+  padding: 22px 26px;
+  background: var(--gold-light);
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(196,150,74,0.2);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #7A5E28;
+  max-width: 42ch;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DETAILS
+───────────────────────────────────────────────────────────── */
+.details { background: var(--bg-warm); }
+.details h2 { color: var(--ink); margin-bottom: 36px; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.detail-card {
+  background: var(--bg-card);
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+}
+.detail-label {
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 8px;
+}
+.detail-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.detail-value.is-price {
+  font-size: 2.6rem;
+  color: var(--sage-mid);
+  line-height: 1;
+}
+.detail-note {
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOW I GUIDE
+───────────────────────────────────────────────────────────── */
+.guide {
+  background: var(--bg-dark);
+  color: var(--ink-white);
+}
+.guide h2    { color: #fff; margin-bottom: 32px; }
+.guide-body  { font-size: 1rem; color: var(--ink-white-m); }
+.guide-body p { max-width: 50ch; }
+.guide-body p strong { color: var(--ink-white); }
+
+.guide-sig {
+  display: inline-block;
+  margin-top: 32px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.9;
+}
+
+/* photo placeholder */
+.guide-photo {
+  width: 100%; max-width: 280px;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.5;
+  margin-top: clamp(32px, 5vw, 0px);
+}
+.guide-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.guide-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(36px, 6vw, 72px);
+  align-items: start;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FINAL CTA
+───────────────────────────────────────────────────────────── */
+.final-cta {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(107,155,156,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 70% at 80% 70%, rgba(196,150,74,0.16) 0%, transparent 60%),
+    #F2EAE0;
+  text-align: center;
+}
+.final-cta h2     { color: var(--ink); margin-bottom: 16px; max-width: 14em; margin-left: auto; margin-right: auto; }
+.final-cta-sub    { font-size: 1.05rem; color: var(--ink-mid); max-width: 40ch; margin: 0 auto 44px; }
+.final-cta-note   { display: block; font-size: 0.8rem; color: var(--ink-soft); margin-top: 18px; letter-spacing: 0.02em; }
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────────────────────── */
+footer {
+  background: var(--bg-dark);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+footer strong { color: rgba(255,255,255,0.65); }
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .nav-links    { display: none; }
+  .nav-toggle   { display: flex; }
+
+  .benefit-grid { grid-template-columns: 1fr; }
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-photo  { max-width: 100%; aspect-ratio: 4/3; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  .detail-grid { grid-template-columns: 1fr 1fr; }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav id="nav" class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">The Weekly Alignment</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#home"         data-nav>Home</a></li>
+      <li><a href="#how-it-works" data-nav>How It Works</a></li>
+      <li><a href="#benefits"     data-nav>Benefits</a></li>
+      <li><a href="#details"      data-nav>Details</a></li>
+      <li><a href="#join"         data-nav>Join</a></li>
+      <!-- add future offers here:
+      <li><a href="#one-on-one"   data-nav>1:1 Alignment</a></li>
+      -->
+    </ul>
+
+    <button
+      id="nav-toggle"
+      class="nav-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="nav-mobile" class="nav-mobile" aria-hidden="true">
+  <ul role="list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#join">Join</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section id="home" class="hero" aria-labelledby="hero-h1">
+  <div class="hero-bg" id="hero-bg" aria-hidden="true">
+    <div class="hero-layer hero-layer-1" id="layer1"></div>
+    <div class="hero-layer hero-layer-2" id="layer2"></div>
+    <div class="hero-layer hero-layer-3" id="layer3"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-title reveal">The Weekly Alignment</p>
+    <h1 id="hero-h1" class="reveal reveal-delay-1">
+      Spend less energy<br>on the &ldquo;shoulds&rdquo;&hellip;<br>
+      <em>and more energy moving<br>things forward</em>&mdash;without<br>
+      the late-night scramble.
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      A weekly live space to reset and align&mdash;so you can move through your week more satisfied, relaxed, and proud of how you spent it.
+    </p>
+    <a href="https://buy.stripe.com/3cIfZhbuF0a93Nr2kn5Rm03" class="btn btn-sage reveal reveal-delay-3" target="_blank" rel="noopener">
+      Join The Weekly Alignment
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <a href="#why" class="hero-scroll" aria-label="Scroll to next section">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M9 3v12M4 10l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Scroll
+  </a>
+</section>
+
+<!-- ── PROBLEM ───────────────────────────────────────────────────── -->
+<section id="why" class="problem" aria-labelledby="problem-h2">
+  <div class="wrap">
+    <h2 id="problem-h2" class="reveal reveal-delay-1">If this sounds familiar&hellip;</h2>
+    <ul class="dot-list" role="list">
+      <li class="reveal reveal-delay-1"><span>You start Monday with the best intentions&mdash;and by Wednesday the week has already happened to you.</span></li>
+      <li class="reveal reveal-delay-2"><span>Your to-do list keeps growing, but the things that actually matter barely move.</span></li>
+      <li class="reveal reveal-delay-3"><span>You spend energy on what feels urgent and keep deferring what feels important.</span></li>
+      <li class="reveal reveal-delay-1"><span>By Friday you feel like you worked hard all week but can&rsquo;t quite point to what you accomplished.</span></li>
+      <li class="reveal reveal-delay-3"><span>You&rsquo;ve tried planning tools and better systems. Some help for a while. But the drift keeps coming back.</span></li>
+    </ul>
+    <p class="problem-intro reveal reveal-delay-2">The issue isn&rsquo;t that you aren&rsquo;t capable or that you need more willpower.
+
+    It&rsquo;s that you aren&rsquo;t aligning with the realities of your week.</p>
+  </div>
+</section>
+
+<!-- ── OFFER INTRO ───────────────────────────────────────────────── -->
+<section id="how-it-works" class="offer-intro" aria-labelledby="offer-h2">
+  <div class="wrap">
+    <h2 id="offer-h2" class="reveal reveal-delay-1">This is what The Weekly Alignment is for.</h2>
+    <div class="offer-container reveal reveal-delay-2">
+      <p class="offer-body">
+        A simple, guided weekly process&mdash;live, together, once a week. The same structure each time, so the practice builds without you having to figure anything out.
+      </p>
+      <ul class="steps-list" role="list">
+        <li class="step-item">
+          <span class="step-num">01</span>
+          <div class="step-text">
+            <h4>Orient</h4>
+            <p>Get a clear view of what&rsquo;s in play this week.</p>
+            <ul class="step-bullets">
+              <li>Take stock of your schedule and commitments</li>
+              <li>Notice what&rsquo;s already requiring bandwidth</li>
+              <li>Get clear on what needs your focus now</li>
+            </ul>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">02</span>
+          <div class="step-text">
+            <h4>Align</h4>
+            <p>Shape a week that fits your capacity.</p>
+            <ul class="step-bullets">
+              <li>Decide what this week is about</li>
+              <li>Shape your week around it</li>
+              <li>Set yourself up to follow through</li>
+            </ul>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">03</span>
+          <div class="step-text">
+            <h4>Navigate</h4>
+            <p>Prepare for the moments that usually throw you off.</p>
+            <ul class="step-bullets">
+              <li>Recognize the kinds of friction you tend to run into</li>
+              <li>Decide how you&rsquo;ll respond instead of avoiding</li>
+              <li>Keep things moving without losing yourself in the process</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SHIFT ─────────────────────────────────────────────────────── -->
+<section class="shift" aria-labelledby="shift-h2">
+  <div class="wrap">
+    <h2 id="shift-h2" class="reveal reveal-delay-1">Here&rsquo;s what starts to change&hellip;</h2>
+    <p class="shift-intro reveal reveal-delay-2">When you have a live, weekly space to reset and align, the week stops happening to you.</p>
+    <ul class="shift-list" role="list">
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>Monday feels different. You start clear on what matters&mdash;and with a realistic plan to match.</span></li>
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>The mental load of &ldquo;figuring out the week&rdquo; gets lifted. That work gets done in the session.</span></li>
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>Urgent things still happen. They just stop consuming everything.</span></li>
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>You stop drifting and start steering.</span></li>
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>You catch yourself going off-course sooner&mdash;and you know how to return.</span></li>
+      <li class="shift-item"><span class="shift-arrow" aria-hidden="true">→</span><span>By the end of the month, you trust yourself more. Because you&rsquo;ve been following through.</span></li>
+    </ul>
+  </div>
+</section>
+
+
+
+<!-- ── WHY LIVE MATTERS ──────────────────────────────────────────── -->
+<section class="why-live" aria-labelledby="why-live-h2">
+  <div class="wrap">
+    <h2 id="why-live-h2" class="reveal reveal-delay-1">You can do this on your own.</h2>
+    <div class="why-live-body">
+      <p class="reveal reveal-delay-2">There are journals, planners, apps, and YouTube videos about weekly reviews. They work for some people, some of the time.</p>
+      <p class="reveal reveal-delay-3">But here&rsquo;s what most of them can&rsquo;t give you: a live space where showing up <em>is</em> the practice.</p>
+      <blockquote class="pull-quote reveal">&ldquo;This is when I do that.&rdquo;</blockquote>
+      <p class="reveal">When you&rsquo;re in a room&mdash;even a virtual one&mdash;with someone guiding the process, something shifts. You actually pause. You actually think. You don&rsquo;t skip it because it got busy or because you&rsquo;re not in the mood.</p>
+      <p class="reveal">The structure is already there. The questions are already prepared. You just have to arrive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT YOU GET ──────────────────────────────────────────────── -->
+<section id="benefits" class="what-you-get" aria-labelledby="get-h2">
+  <div class="wrap">
+    <h2 id="get-h2" class="reveal reveal-delay-1">Inside The Weekly Alignment</h2>
+    <ul class="get-list" role="list">
+      <li class="reveal reveal-delay-1"><div class="get-check" aria-hidden="true">✓</div><span>A weekly live session to reset and shape your week</span></li>
+      <li class="reveal reveal-delay-2"><div class="get-check" aria-hidden="true">✓</div><span>A simple, repeatable structure you follow each time</span></li>
+      <li class="reveal reveal-delay-3"><div class="get-check" aria-hidden="true">✓</div><span>Guided prompts so you&rsquo;re not figuring it out on your own</span></li>
+      <li class="reveal reveal-delay-1"><div class="get-check" aria-hidden="true">✓</div><span>Space to pause, think, and make clear decisions</span></li>
+      <li class="reveal reveal-delay-2"><div class="get-check" aria-hidden="true">✓</div><span>Led by me, with light guidance and practical strategies to help you improve week by week</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────────────────────────────────── -->
+<section class="benefits" aria-labelledby="benefits-h2">
+  <div class="wrap">
+    <h2 id="benefits-h2" class="reveal reveal-delay-1">What this supports over time</h2>
+    <p class="benefits-sub reveal reveal-delay-2">Not in a dramatic way. In a steady, this-actually-feels-different way.</p>
+    <div class="benefit-grid">
+      <article class="benefit-card reveal reveal-delay-1">
+        <h3 class="benefit-title">Less pressure, more clarity</h3>
+        <ul class="benefit-body" role="list">
+          <li>You&rsquo;re not carrying everything in your head</li>
+          <li>You can see what&rsquo;s coming&mdash;and what&rsquo;s handled</li>
+          <li>There&rsquo;s less background noise and second-guessing</li>
+        </ul>
+      </article>
+      <article class="benefit-card reveal reveal-delay-2">
+        <h3 class="benefit-title">More steady progress</h3>
+        <ul class="benefit-body" role="list">
+          <li>Things move forward more consistently</li>
+          <li>Fewer &ldquo;I forgot&rdquo; or last-minute scrambles</li>
+          <li>Less cleanup at the end of the day</li>
+        </ul>
+      </article>
+      <article class="benefit-card reveal reveal-delay-3">
+        <h3 class="benefit-title">More ease in your time</h3>
+        <ul class="benefit-body" role="list">
+          <li>Free time feels like free time</li>
+          <li>You&rsquo;re more present with people</li>
+          <li>You&rsquo;re not constantly pulled by what&rsquo;s undone</li>
+        </ul>
+      </article>
+      <article class="benefit-card reveal reveal-delay-4">
+        <h3 class="benefit-title">A different relationship with yourself</h3>
+        <ul class="benefit-body" role="list">
+          <li>More trust in your ability to follow through</li>
+          <li>More confidence in your decisions</li>
+          <li>A steadier sense of capability</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW THIS FITS ─────────────────────────────────────────────── -->
+<section class="how-fits" aria-labelledby="fits-h2">
+  <div class="wrap">
+    <h2 id="fits-h2" class="reveal reveal-delay-1">Learn it by doing it</h2>
+    <div class="how-fits-body">
+      <p class="reveal reveal-delay-3">You don&rsquo;t need to have everything figured out before you join.</p>
+      <p class="reveal">We&rsquo;ll cover what you need as we go&mdash;and build the structure together in a way that works in your weeks.</p>
+      <hr class="how-fits-rule reveal" />
+      <p class="reveal">Over time, this process will become the foundation of a full course.</p>
+      <p class="reveal">But right now, this is the place to learn it by doing it.</p>
+      <p class="reveal">You&rsquo;ll also be part of shaping how this evolves&mdash;so it reflects what actually works, not just what sounds good on paper.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DETAILS ───────────────────────────────────────────────────── -->
+<section id="details" class="details" aria-labelledby="details-h2">
+  <div class="wrap">
+    <h2 id="details-h2" class="reveal reveal-delay-1">Details</h2>
+    <div class="detail-grid">
+      <div class="detail-card reveal reveal-delay-1">
+        <div class="detail-label">When</div>
+        <div class="detail-value">Mondays,&nbsp;10–11am&nbsp;Pacific</div>
+        <p class="detail-note">Live online each week</p>
+      </div>
+      <div class="detail-card reveal reveal-delay-2">
+        <div class="detail-label">Format</div>
+        <div class="detail-value">Live weekly session, 1 hour</div>
+        <p class="detail-note">Guided from start to finish</p>
+      </div>
+      <div class="detail-card reveal reveal-delay-3">
+        <div class="detail-label">Structure</div>
+        <div class="detail-value">Monthly membership</div>
+        <p class="detail-note">Automatic monthly billing</p>
+      </div>
+      <div class="detail-card reveal reveal-delay-4">
+        <div class="detail-label">Investment</div>
+        <div class="detail-value is-price"><s style="opacity:0.4; font-size:0.65em; vertical-align:middle;">$97</s> $67<span style="font-size:1.2rem; font-family:'Inter',sans-serif; font-weight:400; color:var(--ink-soft)">/mo</span></div>
+        <p class="detail-note">Cancel anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ─────────────────────────────────────────────────── -->
+<section id="join" class="final-cta" aria-labelledby="cta-h2">
+  <div class="wrap">
+    <p class="final-cta-sub reveal reveal-delay-2">If you&rsquo;re ready to spend less energy on the &ldquo;shoulds&rdquo;&hellip;<br>and more energy moving things forward&mdash;without the late-night scramble&mdash;<br><br>this is where that starts to happen.</p>
+    <a href="https://buy.stripe.com/3cIfZhbuF0a93Nr2kn5Rm03" class="btn btn-sage reveal reveal-delay-3" target="_blank" rel="noopener">
+      Join The Weekly Alignment
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <span class="final-cta-note reveal">Mondays, 10&ndash;11am Pacific &middot; $67/month &middot; Cancel anytime</span>
+  </div>
+</section>
+
+<!-- ── HOW I GUIDE ───────────────────────────────────────────────── -->
+<section class="guide" aria-labelledby="guide-h2">
+  <div class="wrap">
+    <div class="guide-layout">
+      <div>
+        <h2 id="guide-h2" class="reveal reveal-delay-1">How I guide</h2>
+        <div class="guide-body">
+          <p class="reveal reveal-delay-2">I&rsquo;ll be guiding each session.</p>
+          <p class="reveal reveal-delay-3">I bring a mix of structure and reflection&mdash;so you&rsquo;re not left spinning, but you&rsquo;re also not being told what to do.</p>
+          <p class="reveal">Each week, I&rsquo;ll offer light guidance, small teachings, and practical ways to work with what&rsquo;s coming up&mdash;so you can hear yourself more clearly and move from there.</p>
+          <p class="reveal">I&rsquo;d love to have you there.</p>
+        </div>
+        <span class="guide-sig reveal">&mdash; Shawn</span>
+      </div>
+      <div class="guide-photo reveal reveal-delay-2" id="guide-photo-wrap">
+        <img src="shawn.jpg" alt="Shawn" />
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>The Weekly Alignment</strong> &mdash; Live weekly &middot; $67/month &middot; Cancel anytime</p>
+</footer>
+
+<script>
+'use strict';
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ─── Sticky nav ───────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('is-scrolled', window.scrollY > 24);
+}, { passive: true });
+
+// ─── Mobile nav ───────────────────────────────────────────────────
+const toggle    = document.getElementById('nav-toggle');
+const mobileNav = document.getElementById('nav-mobile');
+
+toggle.addEventListener('click', () => {
+  const isOpen = toggle.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded', isOpen);
+  mobileNav.setAttribute('aria-hidden', !isOpen);
+  if (isOpen) {
+    mobileNav.style.display = 'block';
+    // force reflow before adding class for transition
+    mobileNav.getBoundingClientRect();
+    mobileNav.classList.add('is-open');
+  } else {
+    mobileNav.classList.remove('is-open');
+  }
+});
+
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileNav.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  });
+});
+
+// ─── Active nav on scroll ─────────────────────────────────────────
+const sections  = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('[data-nav]');
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+// ─── Fade-in on scroll ────────────────────────────────────────────
+if (!prefersReducedMotion) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Shift items get staggered slide-in
+  const shiftObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const items = entry.target.querySelectorAll('.shift-item');
+        items.forEach((item, i) => {
+          setTimeout(() => item.classList.add('is-visible'), i * 80);
+        });
+        shiftObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const shiftList = document.querySelector('.shift-list');
+  if (shiftList) shiftObserver.observe(shiftList);
+} else {
+  // No motion: show everything immediately
+  document.querySelectorAll('.reveal, .shift-item').forEach(el => {
+    el.style.opacity    = '1';
+    el.style.transform  = 'none';
+    el.style.transition = 'none';
+  });
+}
+
+// ─── Hero parallax ────────────────────────────────────────────────
+if (!prefersReducedMotion) {
+  const heroBg = document.getElementById('hero-bg');
+  const layer1 = document.getElementById('layer1');
+  const layer2 = document.getElementById('layer2');
+  const layer3 = document.getElementById('layer3');
+  const heroEl = document.getElementById('home');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > heroEl.offsetHeight) return;
+
+    // Background drifts up slower than page
+    heroBg.style.transform  = `translateY(${y * 0.35}px)`;
+    // Each layer at a different speed for depth
+    layer1.style.transform  = `translateY(${y * 0.55}px)`;
+    layer2.style.transform  = `translateY(${y * 0.20}px)`;
+    layer3.style.transform  = `translateY(${y * 0.45}px)`;
+  }, { passive: true });
+}
+</script>
+
+</body>
+</html>
