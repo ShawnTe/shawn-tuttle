@@ -3,84 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shawn Tuttle — Orchestrate Your Life</title>
+  <title>Shawn Tuttle — The Alignment Method</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
 
 /* ─────────────────────────────────────────────────────────────
    TOKENS
 ───────────────────────────────────────────────────────────── */
 :root {
-  --bg:          #FAF8F5;
-  --bg-warm:     #F5EFE6;
-  --bg-card:     #FFFFFF;
-  --bg-dark:     #1C3F3F;
+  --cream:         #FBF4E8;
+  --cream-warm:    #F5EDD8;
+  --watermelon:    #D63F5A;
+  --watermelon-dk: #B02E47;
+  --coral:         #F06A48;
+  --amber:         #F5A520;
+  --amber-warm:    #F7C94A;
+  --pine:          #1D5C4A;
+  --pine-lt:       #2A7A62;
+  --ink:           #28100C;
+  --ink-mid:       #5C3028;
+  --ink-soft:      #9A6858;
+  --border:        rgba(40,16,12,0.10);
 
-  --ink:         #3A322C;
-  --ink-mid:     #6B5E55;
-  --ink-soft:    #9A8E86;
-  --ink-white:   rgba(255,255,255,0.90);
-  --ink-white-m: rgba(255,255,255,0.65);
-
-  --sage:        #6B9B9C;
-  --sage-light:  #EDF4F4;
-  --sage-mid:    #4F8485;
-  --sage-pale:   #F4F9F9;
-
-  --gold:        #C4964A;
-  --gold-light:  #FBF3E4;
-
-  --border:      rgba(58,50,44,0.10);
-  --border-soft: rgba(58,50,44,0.06);
-  --shadow-sm:   0 1px 4px rgba(58,50,44,0.07);
-  --shadow-md:   0 4px 24px rgba(58,50,44,0.10);
-  --shadow-lg:   0 12px 48px rgba(58,50,44,0.12);
-
-  --nav-h:       66px;
-  --r:           14px;
-  --r-sm:        8px;
-  --max:         700px;
-  --max-wide:    960px;
-  --gap:         clamp(48px, 6vw, 72px);
+  --nav-h:   70px;
+  --r:       4px;
+  --max:     720px;
+  --max-wide:980px;
+  --gap:     clamp(64px, 8vw, 100px);
 }
 
 /* ─────────────────────────────────────────────────────────────
    BASE
 ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  background: var(--cream);
   color: var(--ink);
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ─────────────────────────────────────────────────────────────
    TYPOGRAPHY
 ───────────────────────────────────────────────────────────── */
-h1, h2, h3, h4 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  line-height: 1.15;
-  font-weight: 500;
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.05;
 }
-h1   { font-size: clamp(2.8rem, 6.5vw, 4.8rem); }
-h2   { font-size: clamp(2rem, 4vw, 3rem); }
-h3   { font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 500; }
-h4   { font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 2.4vw, 1.6rem); }
+h4 { font-family: 'Josefin Sans', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
 
 p    { margin-bottom: 1em; max-width: 58ch; }
 p:last-child { margin-bottom: 0; }
@@ -90,474 +73,436 @@ strong { font-weight: 600; }
 /* ─────────────────────────────────────────────────────────────
    LAYOUT
 ───────────────────────────────────────────────────────────── */
-.wrap      { max-width: var(--max);      margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-.wrap-wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-
+.wrap      { max-width: var(--max);       margin: 0 auto; padding: 0 clamp(24px,6vw,48px); }
+.wrap-wide { max-width: var(--max-wide);  margin: 0 auto; padding: 0 clamp(24px,6vw,48px); }
 section { padding: var(--gap) 0; }
 
 /* ─────────────────────────────────────────────────────────────
-   BUTTON
+   BUTTONS
 ───────────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  padding: 14px 36px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  border-radius: var(--r);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.btn:focus-visible { outline: 2px solid var(--sage); outline-offset: 4px; }
-.btn:hover         { transform: translateY(-2px); }
+.btn:hover { transform: translateY(-2px); }
 
-.btn-sage {
-  background: var(--sage);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(107,155,156,0.35);
-}
-.btn-sage:hover { background: var(--sage-mid); box-shadow: 0 8px 28px rgba(107,155,156,0.4); }
+.btn-amber  { background: var(--amber); color: var(--ink); box-shadow: 4px 4px 0 rgba(100,0,20,0.25); }
+.btn-amber:hover { background: var(--amber-warm); }
 
-.btn-outline {
+.btn-wm     { background: var(--watermelon); color: #fff; box-shadow: 4px 4px 0 var(--watermelon-dk); }
+.btn-wm:hover { background: var(--watermelon-dk); box-shadow: 4px 4px 0 var(--ink); }
+
+.btn-cream  { background: var(--cream); color: var(--ink); box-shadow: 4px 4px 0 rgba(251,244,232,0.25); }
+.btn-cream:hover { background: var(--amber-warm); }
+
+.btn-outline-cream {
   background: transparent;
-  color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.4);
+  color: rgba(251,244,232,0.85);
+  border: 2px solid rgba(251,244,232,0.40);
 }
-.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
-
-.btn-dark {
-  background: var(--bg-dark);
-  color: rgba(255,255,255,0.88);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-}
-.btn-dark:hover { background: #1e1915; box-shadow: 0 8px 28px rgba(0,0,0,0.24); }
+.btn-outline-cream:hover { background: rgba(251,244,232,0.10); border-color: rgba(251,244,232,0.80); }
 
 /* ─────────────────────────────────────────────────────────────
-   FADE-IN ON SCROLL
+   REVEAL
 ───────────────────────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
 
 /* ─────────────────────────────────────────────────────────────
    NAV
 ───────────────────────────────────────────────────────────── */
 .nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 300;
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: var(--nav-h); display: flex; align-items: center;
   transition: background 0.35s ease, box-shadow 0.35s ease;
 }
-.nav.is-scrolled {
-  background: rgba(250,248,245,0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--border);
-}
+.nav.is-scrolled { background: var(--cream); box-shadow: 0 2px 0 var(--border); }
 .nav-inner {
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  padding: 0 clamp(20px,5vw,40px);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: var(--max-wide); margin: 0 auto;
+  padding: 0 clamp(24px,6vw,48px); width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.92);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: color 0.3s;
+  font-family: 'Dancing Script', cursive; font-size: 1.55rem; font-weight: 700;
+  color: rgba(251,244,232,0.95); text-decoration: none; transition: color 0.3s;
 }
-.nav-logo:hover { color: #fff; }
+.nav-logo:hover { color: var(--amber-warm); }
 .nav.is-scrolled .nav-logo { color: var(--ink); }
-.nav.is-scrolled .nav-logo:hover { color: var(--sage); }
+.nav.is-scrolled .nav-logo:hover { color: var(--watermelon); }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  list-style: none;
-}
+.nav-links { display: flex; list-style: none; }
 .nav-links a {
-  display: block;
-  padding: 8px 14px;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.82);
-  text-decoration: none;
-  border-radius: var(--r-sm);
-  transition: color 0.3s;
-  position: relative;
+  display: block; padding: 8px 18px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(251,244,232,0.70); text-decoration: none; transition: color 0.2s;
 }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 4px; left: 14px; right: 14px;
-  height: 1.5px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-.nav-links a:hover { color: #fff; }
-.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a:hover { color: var(--amber-warm); }
 .nav.is-scrolled .nav-links a { color: var(--ink-mid); }
-.nav.is-scrolled .nav-links a:hover { color: var(--sage-mid); }
+.nav.is-scrolled .nav-links a:hover { color: var(--watermelon); }
 
 .nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px; height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 7px;
-  border-radius: var(--r-sm);
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 7px;
 }
 .nav-toggle span {
-  display: block;
-  height: 1.5px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease, background 0.3s ease;
+  display: block; height: 2px; background: rgba(251,244,232,0.9); border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, background 0.3s ease;
 }
 .nav.is-scrolled .nav-toggle span { background: var(--ink); }
 .nav-toggle span:nth-child(2) { width: 70%; }
-.nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
-.nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 100%; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
 
 .nav-mobile {
-  position: fixed;
-  inset: var(--nav-h) 0 auto;
-  background: rgba(250,248,245,0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  padding: 16px clamp(20px,5vw,40px) 28px;
-  z-index: 299;
-  display: none;
-  opacity: 0;
-  transform: translateY(-8px);
+  position: fixed; inset: var(--nav-h) 0 auto; background: var(--cream);
+  border-bottom: 2px solid var(--watermelon);
+  padding: 16px clamp(24px,6vw,48px) 28px; z-index: 299;
+  display: none; opacity: 0; transform: translateY(-8px);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .nav-mobile.is-open { display: block; opacity: 1; transform: translateY(0); }
 .nav-mobile ul { list-style: none; }
 .nav-mobile a {
-  display: block;
-  padding: 13px 8px;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-soft);
-  transition: color 0.15s, padding-left 0.2s;
+  display: block; padding: 13px 8px;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border); transition: color 0.15s, padding-left 0.2s;
 }
 .nav-mobile a:last-child { border-bottom: none; }
-.nav-mobile a:hover { color: var(--sage); padding-left: 14px; }
+.nav-mobile a:hover { color: var(--watermelon); padding-left: 14px; }
 
 /* ─────────────────────────────────────────────────────────────
-   HERO
+   HERO  — watermelon gradient, full height
 ───────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
   min-height: 100svh;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
   overflow: hidden;
   padding-top: var(--nav-h);
+  background: linear-gradient(148deg, #C03050 0%, #9B1B30 55%, #7A1025 100%);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: -20% 0 -20%;
-  z-index: 0;
-  will-change: transform;
-  background-image: url('mug.jpeg');
-  background-size: cover;
-  background-position: center 30%;
-}
-.hero-bg::before {
-  content: '';
+/* Intentional concentric arcs anchored to right edge — dance floor echo */
+.hero-arcs {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    155deg,
-    rgba(28, 22, 18, 0.65) 0%,
-    rgba(28, 22, 18, 0.38) 50%,
-    rgba(28, 22, 18, 0.60) 100%
-  );
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
-.hero-bg::after {
+
+/* warm light bloom, upper left */
+.hero::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 15% 85%, rgba(196,150,74,0.18) 0%, transparent 60%);
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 45% 60% at 10% 20%, rgba(245,165,32,0.16) 0%, transparent 65%);
+  pointer-events: none;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  padding: 80px clamp(20px,5vw,40px) 110px;
-  width: 100%;
+  position: relative; z-index: 2;
+  max-width: var(--max-wide); margin: 0 auto;
+  padding: 80px clamp(24px,6vw,48px) 120px; width: 100%;
 }
 
 .hero-eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.40);
-  margin-bottom: 20px;
+  display: none;
 }
 
-.hero h1 {
-  color: #fff;
-  margin-bottom: 24px;
-  max-width: 14em;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.25);
-  line-height: 1.1;
+.hero-script {
+  font-family: 'Dancing Script', cursive; font-weight: 700;
+  font-size: clamp(1.7rem, 4.5vw, 3.2rem);
+  color: var(--amber-warm); line-height: 1.15;
+  margin-bottom: 16px; display: block;
 }
+
+.hero h1 { color: #fff; margin-bottom: 28px; max-width: 18em; line-height: 1.05; }
 
 .hero-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-  font-style: italic;
-  color: rgba(255,255,255,0.72);
-  max-width: 44ch;
-  margin-bottom: 52px;
-  line-height: 1.5;
+  font-size: clamp(1rem, 2vw, 1.2rem); font-style: italic;
+  color: rgba(251,244,232,0.68); max-width: 42ch;
+  margin-bottom: 52px; line-height: 1.75;
 }
 
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
 
 .hero-scroll {
-  position: absolute;
-  bottom: 36px;
-  left: clamp(20px,5vw,40px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.50);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s;
+  position: absolute; bottom: 36px; left: clamp(24px,6vw,48px);
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(251,244,232,0.35); text-decoration: none;
   animation: drift 2.8s ease-in-out infinite;
 }
-.hero-scroll:hover { opacity: 1; }
-@keyframes drift {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(5px); }
-}
+.hero-scroll:hover { color: rgba(251,244,232,0.70); }
+@keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
 /* ─────────────────────────────────────────────────────────────
-   PHILOSOPHY
+   WHO THIS IS FOR  — cream
 ───────────────────────────────────────────────────────────── */
-.philosophy {
-  background: var(--bg);
-  position: relative;
+.who { background: var(--cream); }
+.who h2 { margin-bottom: 48px; }
+.who h2 em { font-style: italic; color: var(--watermelon); }
+
+.who-items { display: flex; flex-direction: column; gap: 0; }
+.who-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  max-width: 52ch;
 }
-.philosophy::before {
-  content: '';
+.who-item:first-child { padding-top: 0; }
+.who-item:last-child { border-bottom: none; }
+
+/* ─────────────────────────────────────────────────────────────
+   ABOUT  — pine green
+───────────────────────────────────────────────────────────── */
+.about {
+  background: var(--pine);
+  color: rgba(251,244,232,0.85);
+  position: relative; overflow: hidden;
+}
+
+/* single arc watermark, bottom right — intentional, not floating */
+.about-arc {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 40% 30% at 90% 20%, rgba(107,155,156,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 35% 25% at 5% 75%, rgba(196,150,74,0.07) 0%, transparent 65%);
+  bottom: -80px; right: -80px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  border: 48px solid rgba(245,165,32,0.12);
   pointer-events: none;
 }
-.philosophy-inner { position: relative; z-index: 1; }
-.philosophy h2 { color: var(--ink); margin-bottom: 28px; max-width: 16em; }
-.philosophy-body { font-size: 1.05rem; color: var(--ink-mid); max-width: 52ch; }
-.philosophy-body p { margin-bottom: 1.2em; }
 
-.pull-quote {
-  margin: 44px 0 0;
-  padding: 28px 32px;
-  background: var(--sage-light);
-  border-radius: var(--r);
-  border-left: 3px solid var(--sage);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--sage-mid);
-  line-height: 1.4;
-  max-width: 42ch;
+.about-eyebrow {
+  font-size: 1rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 12px;
 }
-
-/* ─────────────────────────────────────────────────────────────
-   TWO PATHS
-───────────────────────────────────────────────────────────── */
-.paths { background: var(--bg-warm); }
-.paths h2 { color: var(--ink); margin-bottom: 8px; }
-.paths-intro { color: var(--ink-mid); font-size: 1.05rem; margin-bottom: 48px; }
-
-.paths-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.path-card {
-  background: var(--bg-card);
-  border-radius: var(--r);
-  border: 1px solid var(--border);
-  padding: clamp(28px, 4vw, 44px);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-.path-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-
-.path-label {
-  font-size: 0.67rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--sage);
-}
-
-.path-card h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--ink);
-  line-height: 1.2;
-}
-
-.path-body { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; }
-.path-body p { max-width: none; margin-bottom: 0.8em; }
-.path-body p:last-child { margin-bottom: 0; }
-
-.path-detail {
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.02em;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-soft);
-}
-
-/* ─────────────────────────────────────────────────────────────
-   ABOUT
-───────────────────────────────────────────────────────────── */
-.about { background: var(--bg-dark); color: var(--ink-white); }
-.about h2    { color: #fff; margin-bottom: 32px; }
-.about-body  { font-size: 1rem; color: var(--ink-white-m); }
-.about-body p { max-width: 50ch; }
+.about h2 { color: var(--cream); margin-bottom: 36px; }
+.about-body { font-size: 1rem; color: rgba(251,244,232,0.72); }
+.about-body p { max-width: 52ch; margin-bottom: 1.2em; }
+.about-body p:last-child { margin-bottom: 0; }
 
 .about-sig {
-  display: inline-block;
-  margin-top: 32px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  color: var(--gold);
-  opacity: 0.9;
+  display: inline-block; margin-top: 40px;
+  font-family: 'Dancing Script', cursive; font-size: 2rem; font-weight: 700;
+  color: var(--amber);
 }
 
 .about-photo {
-  width: 100%; max-width: 280px;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--r);
-  overflow: hidden;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.25);
-  font-size: 0.78rem;
-  text-align: center;
-  padding: 20px;
-  line-height: 1.5;
-  margin-top: clamp(32px, 5vw, 0px);
+  width: 100%; max-width: 320px; aspect-ratio: 4/5;
+  border-radius: var(--r); overflow: hidden;
+  background: rgba(251,244,232,0.06);
+  border: 3px solid var(--amber);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(251,244,232,0.20); font-size: 0.75rem; text-align: center; padding: 20px; line-height: 1.5;
+  box-shadow: 10px 10px 0 #123D30;
 }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% top; display: block; }
 .about-layout {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: clamp(36px, 6vw, 72px);
-  align-items: start;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: clamp(40px,6vw,80px); align-items: start;
+  position: relative; z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WHAT WORKING TOGETHER  — cream-warm
+───────────────────────────────────────────────────────────── */
+.together { background: var(--cream-warm); }
+.together h2 { margin-bottom: 32px; }
+.together-body {
+  font-size: 1.08rem; color: var(--ink-mid); max-width: 54ch; line-height: 1.9;
+}
+.together-body p { margin-bottom: 1.3em; }
+.together-body p:last-child { margin-bottom: 0; }
+
+.together-quote {
+  margin-top: 52px;
+  font-family: 'Dancing Script', cursive; font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--watermelon); line-height: 1.3; max-width: 22ch;
+  padding-left: 28px;
+  border-left: 4px solid var(--coral);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   3 WAYS TO WIN  — deep watermelon
+───────────────────────────────────────────────────────────── */
+.offerings {
+  background: var(--watermelon-dk);
+  position: relative; overflow: hidden;
+}
+
+/* amber stripe across the top — structural, not decorative */
+.offerings::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--amber), var(--coral), var(--amber-warm));
+}
+
+.offerings-eyebrow {
+  font-size: 1rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 12px;
+}
+.offerings h2 { color: var(--cream); margin-bottom: 56px; }
+
+.offerings-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; align-items: start;
+}
+
+.offering-card {
+  background: rgba(251,244,232,0.06);
+  border: 1px solid rgba(251,244,232,0.15);
+  border-radius: var(--r);
+  padding: clamp(24px,3vw,40px);
+  display: flex; flex-direction: column; gap: 18px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.offering-card:hover {
+  background: rgba(251,244,232,0.10);
+  border-color: rgba(245,165,32,0.40);
+}
+
+.offering-label {
+  font-size: 0.88rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber);
+}
+
+.offering-card h3 {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+  color: var(--cream); line-height: 1.2;
+}
+
+.offering-body { font-size: 0.92rem; color: rgba(251,244,232,0.68); line-height: 1.8; }
+.offering-body p { max-width: none; margin-bottom: 0.85em; }
+.offering-body p:last-child { margin-bottom: 0; }
+
+.offering-for {
+  font-size: 0.82rem; color: rgba(251,244,232,0.50);
+  font-style: italic; line-height: 1.65;
+  padding-top: 14px;
+  border-top: 1px solid rgba(251,244,232,0.10);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CTA / FORM
+───────────────────────────────────────────────────────────── */
+.cta-band {
+  background: var(--amber);
+  padding: clamp(56px,7vw,88px) 0;
+}
+.cta-band h2 {
+  font-style: italic; color: var(--ink);
+  margin-bottom: 12px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+.cta-band .cta-sub {
+  font-size: 1rem; color: var(--ink-mid);
+  max-width: 44ch; margin-bottom: 48px;
+  line-height: 1.75;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 540px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-mid);
+}
+.form-group input,
+.form-group textarea {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  background: rgba(251,244,232,0.70);
+  border: 2px solid rgba(40,16,12,0.20);
+  border-radius: var(--r);
+  padding: 12px 16px;
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--watermelon);
+  background: rgba(251,244,232,0.90);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-note {
+  font-size: 0.80rem; color: var(--ink-soft);
+  font-style: italic; margin-top: -8px;
+}
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
 }
 
 /* ─────────────────────────────────────────────────────────────
    FOOTER
 ───────────────────────────────────────────────────────────── */
 footer {
-  background: var(--bg-dark);
-  color: rgba(255,255,255,0.30);
-  text-align: center;
-  padding: 32px 20px;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--ink); color: rgba(251,244,232,0.40);
+  text-align: center; padding: 28px 20px;
+  font-size: 0.70rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
 }
-footer strong { color: rgba(255,255,255,0.60); }
-footer a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-footer a:hover { color: var(--sage); }
+footer strong { color: rgba(251,244,232,0.80); }
+footer a { color: rgba(251,244,232,0.45); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--amber); }
 
 /* ─────────────────────────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .offerings-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 680px) {
   .nav-links  { display: none; }
   .nav-toggle { display: flex; }
-  .paths-grid { grid-template-columns: 1fr; }
   .about-layout { grid-template-columns: 1fr; }
-  .about-photo { max-width: 100%; aspect-ratio: 4/3; }
+  .about-photo { max-width: 280px; aspect-ratio: 4/5; margin: 0 auto; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 480px) {
-  h1 { font-size: 2.4rem; }
-  h2 { font-size: 1.8rem; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.9rem; }
+  .hero-script { font-size: 1.6rem; }
 }
 
   </style>
 </head>
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<!-- ── NAV ───────────────────────────────────────────────────────── -->
 <nav id="nav" class="nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#home" class="nav-logo">Shawn Tuttle</a>
     <ul class="nav-links" role="list">
-      <li><a href="#paths">Work With Me</a></li>
+      <li><a href="#offerings">Work With Me</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile">
@@ -565,124 +510,193 @@ footer a:hover { color: var(--sage); }
     </button>
   </div>
 </nav>
-
 <div id="nav-mobile" class="nav-mobile" aria-hidden="true">
   <ul role="list">
-    <li><a href="#paths">Work With Me</a></li>
+    <li><a href="#offerings">Work With Me</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </div>
 
 <main>
 
-<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<!-- ── HERO ──────────────────────────────────────────────────────── -->
 <section id="home" class="hero" aria-labelledby="hero-h1">
-  <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+
+  <svg class="hero-arcs" viewBox="0 0 960 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- light beams radiating from upper right -->
+    <polygon points="1010,-30 -60,160 -60,210"  fill="#F7C94A" opacity="0.16"/>
+    <polygon points="1010,-30 -60,330 -60,385"  fill="#FBF4E8" opacity="0.11"/>
+    <polygon points="1010,-30 -60,500 -60,560"  fill="#F7C94A" opacity="0.13"/>
+    <polygon points="1010,-30 180,750 300,750"   fill="#FBF4E8" opacity="0.09"/>
+  </svg>
+
   <div class="hero-content">
-    <h1 id="hero-h1" class="reveal">Orchestrate<br>your life.</h1>
-    <p class="hero-sub reveal reveal-delay-2">She's been hiding in the corner long enough.<br>Time to get Baby on the dancefloor.</p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="#paths" class="btn btn-sage">See how we work together
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
+    <span class="hero-script reveal">When your big idea is officially done being polite about it.</span>
+    <h1 id="hero-h1" class="reveal reveal-delay-1">Baby&rsquo;s not in<br>the corner anymore.</h1>
+    <p class="hero-sub reveal reveal-delay-2">You know that Juicy Thing you keep feeling the pull of &mdash; the one that keeps getting bumped, keeps getting talked over, keeps getting the leftovers of your week? You&rsquo;re done letting her wait.</p>
   </div>
-  <a href="#philosophy" class="hero-scroll" aria-label="Scroll to next section">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+  <a href="#who" class="hero-scroll" aria-label="Scroll down">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
       <path d="M9 3v12M4 10l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     Scroll
   </a>
 </section>
 
-<!-- ── PHILOSOPHY ───────────────────────────────────────────────── -->
-<section id="philosophy" class="philosophy" aria-labelledby="philosophy-h2">
-  <div class="wrap philosophy-inner">
-    <div class="philosophy-body">
-      <p class="reveal">My friend, you used to love having a full day stretched out in front of you. What happened?</p>
-      <p class="reveal reveal-delay-1">You got good at managing life &mdash; tracking all the things, keeping it all flowing. But where did You go? When did the details become the whole picture?</p>
-      <p class="reveal reveal-delay-2">I see your energy. You are so fucking On It. But how do your wings allow you to land on the petal of that flower when you are racing 500 mph? How can you feel, see, hear that quiet voice within?</p>
-      <p class="reveal reveal-delay-3">There is a song that moves through you. It hasn&rsquo;t gone anywhere. You&rsquo;ve just stopped being able to hear it.</p>
-      <p class="reveal reveal-delay-4">My work is to help you live aligned with your Self again &mdash; tuned to the vibration of your own sweetest song.</p>
-    </div>
-    <blockquote class="pull-quote reveal reveal-delay-4">
-      &ldquo;There is a song that moves through you. Let&rsquo;s get you tuned back in to it.&rdquo;
-    </blockquote>
-  </div>
-</section>
-
-<!-- ── TWO PATHS ─────────────────────────────────────────────────── -->
-<section id="paths" class="paths" aria-labelledby="paths-h2">
-  <div class="wrap-wide">
-    <h2 id="paths-h2" class="reveal">Two ways in.</h2>
-    <p class="paths-intro reveal reveal-delay-1">Same philosophy. Different levels of support.</p>
-
-    <div class="paths-grid">
-
-      <div class="path-card reveal reveal-delay-1">
-        <p class="path-label">1:1 Coaching</p>
-        <h3>Your Thing keeps getting bumped.<br>Let&rsquo;s change that.</h3>
-        <div class="path-body">
-          <p>You can feel something pulling at you &mdash; a project, a creative life, a version of yourself &mdash; and it keeps staying just off-stage.</p>
-          <p>In coaching, we figure out what&rsquo;s in the way &mdash; the beliefs, the old stories, the weeks that fill up before your Thing gets a turn. Then we build the weeks that bring her out.</p>
-        </div>
-        <a href="coaching.html" class="btn btn-sage">Explore coaching
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="path-card reveal reveal-delay-2">
-        <p class="path-label">Membership</p>
-        <h3>The Aligned Week</h3>
-        <div class="path-body">
-          <p>A weekly live space to reset and align &mdash; so you move through your week feeling satisfied, clear, and proud of how you spent it.</p>
-          <p>Not a course. Not a planner. A practice &mdash; held weekly, with a guide who knows what it takes to show up for the week you intended.</p>
-        </div>
-        <a href="weeklyAlignment/weekly-alignment.html" class="btn btn-sage">Join the membership
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
+<!-- ── WHO THIS IS FOR ───────────────────────────────────────────── -->
+<section id="who" class="who" aria-labelledby="who-h2">
+  <div class="wrap">
+    <h2 id="who-h2" class="reveal">You&rsquo;re in the right place <em>if&hellip;</em></h2>
+    <div class="who-items">
+      <p class="who-item reveal">You know what it is. You&rsquo;ve known for a while. And you&rsquo;re still standing at the edge of it.</p>
+      <p class="who-item reveal reveal-delay-1">You&rsquo;re smart, capable, and managing life. But Your Juicy Thing isn&rsquo;t getting any airtime.</p>
+      <p class="who-item reveal reveal-delay-2">You second-guess your knowing into oblivion. You feel it&hellip; then your head gets involved.</p>
+      <p class="who-item reveal reveal-delay-3">You&rsquo;ve tried the planners, the systems, the discipline pep talks. Something&rsquo;s still missing.</p>
     </div>
   </div>
 </section>
 
 <!-- ── ABOUT ─────────────────────────────────────────────────────── -->
 <section id="about" class="about" aria-labelledby="about-h2">
+  <div class="about-arc" aria-hidden="true"></div>
   <div class="wrap">
     <div class="about-layout">
       <div>
-        <h2 id="about-h2" class="reveal">How I guide</h2>
+        <p class="about-eyebrow reveal">I know this story</p>
+        <h2 id="about-h2" class="reveal reveal-delay-1">It might be<br>yours too.</h2>
         <div class="about-body">
-          <p class="reveal reveal-delay-1">I&rsquo;m Shawn. I&rsquo;ve gone from never playing an instrument to performing on stage with a band. Led bicycle tours through Italy and France. Packed a backpack in my 40s and traveled through Mexico, Thailand, and Europe. Left a decade of solopreneurship to become a software engineer &mdash; and spent the next ten years inside the puzzle of writing code.</p>
-          <p class="reveal reveal-delay-2">The pattern looks simple from the outside. The middle is always sticky. I&rsquo;ve learned to hear myself through the noise, trust what I know, and move from there.</p>
-          <p class="reveal reveal-delay-3">That&rsquo;s what I teach.</p>
-          <p class="reveal reveal-delay-4">I bring structure and reflection &mdash; so you&rsquo;re not left spinning, and you&rsquo;re not being told what to do. Light guidance, practical tools, and a weekly space to hear yourself more clearly.</p>
+          <p class="reveal reveal-delay-2">I&rsquo;m Shawn. I have a background in professional organizing, mindful productivity, and a decade in software engineering. I&rsquo;ve spent years obsessed with one question: why do things make perfect sense on paper &mdash; and fall apart in real life?</p>
+          <p class="reveal reveal-delay-2">Started from zero with an instrument to performing on stage with a band. Led bicycle tours through Italy and France for two seasons. Backpacked in my 40s through Mexico, Thailand, and Europe. Left a decade of solopreneurship to become a software engineer for 10 years.</p>
+          <p class="reveal reveal-delay-3">The middle part is always sticky. My overactive head goes into overdrive &mdash; <em>who am I to do that? Too old, too unqualified, too fill-in-the-blank</em> &mdash; until you&rsquo;ve almost convinced yourself the thing isn&rsquo;t possible.</p>
+          <p class="reveal reveal-delay-3">I know what it feels like when the knowing is louder than the doubt. I&rsquo;ve learned to listen for it, trust it, and move from it. And I&rsquo;m ready to share that with you.</p>
         </div>
         <span class="about-sig reveal">&mdash; Shawn</span>
       </div>
       <div class="about-photo reveal reveal-delay-2">
-        <img src="mug.jpeg" alt="Shawn Tuttle" />
+        <img src="st.jpg" alt="Shawn Tuttle" />
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── WHAT WORKING TOGETHER LOOKS LIKE ─────────────────────────── -->
+<section id="together" class="together" aria-labelledby="together-h2">
+  <div class="wrap">
+    <h2 id="together-h2" class="reveal">What working together<br>looks like.</h2>
+    <div class="together-body">
+      <p class="reveal reveal-delay-1">You already know what you want.</p>
+      <p class="reveal reveal-delay-1">The Alignment Method is designed to address everything standing between you and living it &mdash; the beliefs, the old stories, the patterns you keep bumping into, the self-sabotage.</p>
+      <p class="reveal reveal-delay-2">Love, believe me, I&rsquo;ve been there. Let&rsquo;s get All of You on board.</p>
+      <p class="reveal reveal-delay-2">Through Orient, Align, and Navigate, we work the whole thing &mdash; your inner landscape and your outer life &mdash; until your Vision isn&rsquo;t just something you&rsquo;re moving toward.</p>
+    </div>
+    <blockquote class="together-quote reveal reveal-delay-3">
+      She&rsquo;s someone you Be.
+    </blockquote>
+  </div>
+</section>
+
+<!-- ── 3 WAYS TO WIN ─────────────────────────────────────────────── -->
+<section id="offerings" class="offerings" aria-labelledby="offerings-h2">
+  <div class="wrap-wide">
+    <p class="offerings-eyebrow reveal">The Alignment Method</p>
+    <h2 id="offerings-h2" class="reveal reveal-delay-1">3 ways to win.</h2>
+
+    <div class="offerings-grid">
+
+      <div class="offering-card reveal reveal-delay-1">
+        <p class="offering-label">Single Session</p>
+        <h3>The Ignition Session</h3>
+        <div class="offering-body">
+          <p>This is where The Alignment Method begins: Orient. We notice where you are now &mdash; not where you think you should be. Who&rsquo;s been missing from the table.</p>
+          <p>Then we invite her back in. Vision. We re-seat her at the head of the table and invite her to lead.</p>
+          <p>You&rsquo;ll leave with a felt sense of her &mdash; not just clarity on direction, but a genuine reconnection with who you&rsquo;re becoming. Plus a personalized toolkit: a visual, a playlist, a guided audio made for you.</p>
+        </div>
+        <p class="offering-for">For you if you know something has been pulling and you&rsquo;re ready to move. You don&rsquo;t want a lot of hand-holding &mdash; you just need the spark.</p>
+      </div>
+
+      <div class="offering-card reveal reveal-delay-2">
+        <p class="offering-label">6 Weeks</p>
+        <h3>The Tuning</h3>
+        <div class="offering-body">
+          <p>Vision is back at the head of the table. Now we make sure she stays.</p>
+          <p>Over six weeks, we go deeper into The Alignment Method &mdash; clearing what&rsquo;s been crowding her out, deepening the Orient work, and moving into Align: the practice of bringing your life into resonance with her.</p>
+          <p>Your actions, your mindset, your environment &mdash; reflecting Vision ever more deeply.</p>
+        </div>
+        <p class="offering-for">For you if you want the spark and the structure. You&rsquo;re making a real change and you want someone in your corner while it takes hold.</p>
+      </div>
+
+      <div class="offering-card reveal reveal-delay-3">
+        <p class="offering-label">12 Weeks</p>
+        <h3>The Full Season</h3>
+        <div class="offering-body">
+          <p>The complete Alignment Method. All twelve weeks &mdash; more angles, more depth, more room for the work to take root.</p>
+          <p>Vision is at the head of the table. Navigate is how we keep her there. Deeper self-awareness. The patterns that keep surfacing, the self-sabotage you almost didn&rsquo;t catch, the integration that helps it stick.</p>
+          <p>By the end, you Are her.</p>
+        </div>
+        <p class="offering-for">For you if you&rsquo;re in the middle of a real transition and you want sustained support while it unfolds. You&rsquo;re not just learning a new practice &mdash; you&rsquo;re becoming someone new.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA / FORM ─────────────────────────────────────────────────── -->
+<section id="contact" class="cta-band">
+  <div class="wrap">
+    <h2 class="reveal">Ready to find out how<br>this can work for you?</h2>
+    <p class="cta-sub reveal reveal-delay-1">Tell me a little about where you are. If it feels like a fit, I&rsquo;ll send you a link to book a Discovery Call.</p>
+
+    <button id="show-form" class="btn btn-wm reveal reveal-delay-2" onclick="document.getElementById('show-form').style.display='none'; document.getElementById('contact-form').style.display='flex';">Let&rsquo;s talk
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <form id="contact-form" class="contact-form" style="display:none;"
+          name="discovery"
+          method="POST"
+          data-netlify="true"
+          action="https://cal.com/shawn-tuttle-nextchapter/discovery-call">
+      <input type="hidden" name="form-name" value="discovery" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="juicy-thing">What&rsquo;s your Juicy Thing?</label>
+        <input type="text" id="juicy-thing" name="juicy-thing" required placeholder="The thing that keeps pulling at you&hellip;" />
+      </div>
+
+      <div class="form-group">
+        <label for="shift">What&rsquo;s the one thing you most want to shift?</label>
+        <textarea id="shift" name="shift" required placeholder="No need to have it all figured out&hellip;"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-wm">Send it
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <p><strong>Shawn Tuttle</strong> &mdash; <a href="weeklyAlignment/weekly-alignment.html">The Aligned Week</a> &middot; <a href="coaching.html">Coaching</a></p>
+  <p>&copy; 2026 Shawn Tuttle</p>
 </footer>
 
 <script>
 'use strict';
-
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -710,14 +724,6 @@ mobileNav.querySelectorAll('a').forEach(a => {
     mobileNav.setAttribute('aria-hidden', 'true');
   });
 });
-
-const heroBg = document.getElementById('hero-bg');
-const heroEl = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (y > heroEl.offsetHeight) return;
-  heroBg.style.transform = `translateY(${y * 0.35}px)`;
-}, { passive: true });
 
 const revealEls = document.querySelectorAll('.reveal');
 const observer  = new IntersectionObserver(
