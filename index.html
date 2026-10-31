@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shawn Tuttle — The Alignment Method</title>
+  <title>Shawn Tuttle — What&rsquo;s Next</title>
+  <meta name="description" content="A chapter is closing and you can feel it, even if you have no idea what comes next. Coaching with Shawn Tuttle to listen for what&rsquo;s next and take it one step at a time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shawn Tuttle — What&rsquo;s Next" />
+  <meta property="og:description" content="A chapter is closing and you can feel it, even if you have no idea what comes next. Coaching with Shawn Tuttle to listen for what&rsquo;s next and take it one step at a time." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -308,21 +312,22 @@ section { padding: var(--gap) 0; }
   color: var(--amber);
 }
 
+.about-layout {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(40px,6vw,72px); align-items: start;
+  position: relative; z-index: 1;
+}
+.about-photos { display: flex; flex-direction: column; gap: 36px; padding-top: 8px; }
 .about-photo {
-  width: 100%; max-width: 320px; aspect-ratio: 4/5;
+  width: 100%; max-width: 100%;
   border-radius: var(--r); overflow: hidden;
   background: rgba(251,244,232,0.06);
   border: 3px solid var(--amber);
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(251,244,232,0.20); font-size: 0.75rem; text-align: center; padding: 20px; line-height: 1.5;
   box-shadow: 10px 10px 0 #123D30;
 }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% top; display: block; }
-.about-layout {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: clamp(40px,6vw,80px); align-items: start;
-  position: relative; z-index: 1;
-}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-photo-main { aspect-ratio: 4/3; }
+.about-photo-main img { object-position: 66% 40%; }
 
 /* ─────────────────────────────────────────────────────────────
    WHAT WORKING TOGETHER  — cream-warm
@@ -423,6 +428,18 @@ section { padding: var(--gap) 0; }
   line-height: 1.75;
 }
 
+.cta-layout {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(40px,6vw,72px); align-items: center;
+}
+.cta-photo {
+  aspect-ratio: 3/2; border-radius: var(--r); overflow: hidden;
+  border: 3px solid var(--cream);
+  box-shadow: 10px 10px 0 var(--pine);
+  transform: rotate(2deg);
+}
+.cta-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 50%; display: block; }
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -484,7 +501,9 @@ footer a:hover { color: var(--amber); }
   .nav-links  { display: none; }
   .nav-toggle { display: flex; }
   .about-layout { grid-template-columns: 1fr; }
-  .about-photo { max-width: 280px; aspect-ratio: 4/5; margin: 0 auto; }
+  .about-photos { gap: 28px; }
+  .cta-layout { grid-template-columns: 1fr; }
+  .cta-photo { max-width: 420px; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 480px) {
@@ -531,9 +550,9 @@ footer a:hover { color: var(--amber); }
   </svg>
 
   <div class="hero-content">
-    <span class="hero-script reveal">When your big idea is officially done being polite about it.</span>
-    <h1 id="hero-h1" class="reveal reveal-delay-1">Baby&rsquo;s not in<br>the corner anymore.</h1>
-    <p class="hero-sub reveal reveal-delay-2">You know that Juicy Thing you keep feeling the pull of &mdash; the one that keeps getting bumped, keeps getting talked over, keeps getting the leftovers of your week? You&rsquo;re done letting her wait.</p>
+    <span class="hero-script reveal">For the space between what was and what&rsquo;s next.</span>
+    <h1 id="hero-h1" class="reveal reveal-delay-1">A chapter is closing.<br>You can feel it.</h1>
+    <p class="hero-sub reveal reveal-delay-2">Maybe you have no idea what comes next. That&rsquo;s not a problem to solve &mdash; it&rsquo;s a place worth exploring. And you don&rsquo;t have to explore it alone.</p>
   </div>
   <a href="#who" class="hero-scroll" aria-label="Scroll down">
     <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -548,10 +567,10 @@ footer a:hover { color: var(--amber); }
   <div class="wrap">
     <h2 id="who-h2" class="reveal">You&rsquo;re in the right place <em>if&hellip;</em></h2>
     <div class="who-items">
-      <p class="who-item reveal">You know what it is. You&rsquo;ve known for a while. And you&rsquo;re still standing at the edge of it.</p>
-      <p class="who-item reveal reveal-delay-1">You&rsquo;re smart, capable, and managing life. But Your Juicy Thing isn&rsquo;t getting any airtime.</p>
-      <p class="who-item reveal reveal-delay-2">You second-guess your knowing into oblivion. You feel it&hellip; then your head gets involved.</p>
-      <p class="who-item reveal reveal-delay-3">You&rsquo;ve tried the planners, the systems, the discipline pep talks. Something&rsquo;s still missing.</p>
+      <p class="who-item reveal">You can feel a chapter coming to a close &mdash; and you have no idea what comes next.</p>
+      <p class="who-item reveal reveal-delay-1">Something feels off. Or something feels right. And you can&rsquo;t quite explain it yet.</p>
+      <p class="who-item reveal reveal-delay-2">You&rsquo;re smart, capable, and managing life. But there&rsquo;s a quiet restlessness that won&rsquo;t go away.</p>
+      <p class="who-item reveal reveal-delay-3">You feel it&hellip; then your head gets involved and wants a five-year plan before you take a single step.</p>
     </div>
   </div>
 </section>
@@ -559,21 +578,23 @@ footer a:hover { color: var(--amber); }
 <!-- ── ABOUT ─────────────────────────────────────────────────────── -->
 <section id="about" class="about" aria-labelledby="about-h2">
   <div class="about-arc" aria-hidden="true"></div>
-  <div class="wrap">
+  <div class="wrap-wide">
     <div class="about-layout">
       <div>
-        <p class="about-eyebrow reveal">I know this story</p>
-        <h2 id="about-h2" class="reveal reveal-delay-1">It might be<br>yours too.</h2>
+        <p class="about-eyebrow reveal">I know this place</p>
+        <h2 id="about-h2" class="reveal reveal-delay-1">I&rsquo;ve stood here<br>more than once.</h2>
         <div class="about-body">
           <p class="reveal reveal-delay-2">I&rsquo;m Shawn. I have a background in professional organizing, mindful productivity, and a decade in software engineering. I&rsquo;ve spent years obsessed with one question: why do things make perfect sense on paper &mdash; and fall apart in real life?</p>
-          <p class="reveal reveal-delay-2">Started from zero with an instrument to performing on stage with a band. Led bicycle tours through Italy and France for two seasons. Backpacked in my 40s through Mexico, Thailand, and Europe. Left a decade of solopreneurship to become a software engineer for 10 years.</p>
-          <p class="reveal reveal-delay-3">The middle part is always sticky. My overactive head goes into overdrive &mdash; <em>who am I to do that? Too old, too unqualified, too fill-in-the-blank</em> &mdash; until you&rsquo;ve almost convinced yourself the thing isn&rsquo;t possible.</p>
-          <p class="reveal reveal-delay-3">I know what it feels like when the knowing is louder than the doubt. I&rsquo;ve learned to listen for it, trust it, and move from it. And I&rsquo;m ready to share that with you.</p>
+          <p class="reveal reveal-delay-2">Started from zero with an instrument to performing on stage with a band. Led bicycle tours through Italy and France for two seasons. Backpacked in my 40s through Mexico, Thailand, and Europe. Left a decade of solopreneurship to become a software engineer for 10 years. None of it was on a five-year plan.</p>
+          <p class="reveal reveal-delay-3">Every one of those turns started the same way: a chapter closing before the next one had a name. And the middle part is always sticky. My overactive head goes into overdrive &mdash; <em>who am I to do that? Too old, too unqualified, too fill-in-the-blank</em> &mdash; until I&rsquo;ve almost convinced myself to stay put.</p>
+          <p class="reveal reveal-delay-3">I&rsquo;ve learned to listen for what&rsquo;s next, even when it&rsquo;s quiet. To trust it, take one step, and let the path show up as I walk it. I&rsquo;d love to help you do the same.</p>
         </div>
         <span class="about-sig reveal">&mdash; Shawn</span>
       </div>
-      <div class="about-photo reveal reveal-delay-2">
-        <img src="st.jpg" alt="Shawn Tuttle" />
+      <div class="about-photos">
+        <div class="about-photo about-photo-main reveal reveal-delay-2">
+          <img src="st-in-swinging-chair.jpg" alt="Shawn Tuttle smiling from a swinging chair" />
+        </div>
       </div>
     </div>
   </div>
@@ -584,13 +605,13 @@ footer a:hover { color: var(--amber); }
   <div class="wrap">
     <h2 id="together-h2" class="reveal">What working together<br>looks like.</h2>
     <div class="together-body">
-      <p class="reveal reveal-delay-1">You already know what you want.</p>
-      <p class="reveal reveal-delay-1">The Alignment Method is designed to address everything standing between you and living it &mdash; the beliefs, the old stories, the patterns you keep bumping into, the self-sabotage.</p>
+      <p class="reveal reveal-delay-1">You don&rsquo;t need to know what&rsquo;s next to begin.</p>
+      <p class="reveal reveal-delay-1">The Alignment Method is built for the in-between &mdash; when one chapter is closing and the next hasn&rsquo;t shown itself yet. We start where you are. We listen for what&rsquo;s pulling at you, even if it&rsquo;s faint, and clear out what&rsquo;s been drowning it out: the old stories, the &ldquo;shoulds,&rdquo; the fear dressed up as being responsible.</p>
       <p class="reveal reveal-delay-2">Love, believe me, I&rsquo;ve been there. Let&rsquo;s get All of You on board.</p>
-      <p class="reveal reveal-delay-2">Through Orient, Align, and Navigate, we work the whole thing &mdash; your inner landscape and your outer life &mdash; until your Vision isn&rsquo;t just something you&rsquo;re moving toward.</p>
+      <p class="reveal reveal-delay-2">Through Orient, Align, and Navigate, we work the whole thing &mdash; your inner landscape and your outer life &mdash; one step at a time, finding the path as you walk it.</p>
     </div>
     <blockquote class="together-quote reveal reveal-delay-3">
-      She&rsquo;s someone you Be.
+      You don&rsquo;t need the whole map. Just the next step.
     </blockquote>
   </div>
 </section>
@@ -599,7 +620,7 @@ footer a:hover { color: var(--amber); }
 <section id="offerings" class="offerings" aria-labelledby="offerings-h2">
   <div class="wrap-wide">
     <p class="offerings-eyebrow reveal">The Alignment Method</p>
-    <h2 id="offerings-h2" class="reveal reveal-delay-1">3 ways to win.</h2>
+    <h2 id="offerings-h2" class="reveal reveal-delay-1">3 ways to begin.</h2>
 
     <div class="offerings-grid">
 
@@ -607,29 +628,29 @@ footer a:hover { color: var(--amber); }
         <p class="offering-label">Single Session</p>
         <h3>The Ignition Session</h3>
         <div class="offering-body">
-          <p>This is where The Alignment Method begins: Orient. We notice where you are now &mdash; not where you think you should be. Who&rsquo;s been missing from the table.</p>
-          <p>Then we invite her back in. Vision. We re-seat her at the head of the table and invite her to lead.</p>
-          <p>You&rsquo;ll leave with a felt sense of her &mdash; not just clarity on direction, but a genuine reconnection with who you&rsquo;re becoming. Plus a personalized toolkit: a visual, a playlist, a guided audio made for you.</p>
+          <p>This is where The Alignment Method begins: Orient. We notice where you are now &mdash; not where you think you should be. What&rsquo;s ending. What&rsquo;s asking for your attention. Who&rsquo;s been missing from the table.</p>
+          <p>Then we invite her back in. Vision. We re-seat her at the head of the table and listen for where she wants to go.</p>
+          <p>You&rsquo;ll leave with a felt sense of what&rsquo;s next &mdash; not a five-year plan, but a direction you can trust and a first step to take. Plus a personalized toolkit: a visual, a playlist, a guided audio made for you.</p>
         </div>
-        <p class="offering-for">For you if you know something has been pulling and you&rsquo;re ready to move. You don&rsquo;t want a lot of hand-holding &mdash; you just need the spark.</p>
+        <p class="offering-for">For you if you can feel a shift coming and want a grounded place to start. You don&rsquo;t want a lot of hand-holding &mdash; you just need the spark.</p>
       </div>
 
       <div class="offering-card reveal reveal-delay-2">
-        <p class="offering-label">6 Weeks</p>
+        <p class="offering-label">8 Weeks</p>
         <h3>The Tuning</h3>
         <div class="offering-body">
-          <p>Vision is back at the head of the table. Now we make sure she stays.</p>
-          <p>Over six weeks, we go deeper into The Alignment Method &mdash; clearing what&rsquo;s been crowding her out, deepening the Orient work, and moving into Align: the practice of bringing your life into resonance with her.</p>
+          <p>Vision is back at the head of the table. Now we give what&rsquo;s emerging room to grow.</p>
+          <p>Over eight weeks, we go deeper into The Alignment Method &mdash; clearing what&rsquo;s been crowding her out, deepening the Orient work, and moving into Align: experimenting your way forward and bringing your life into resonance with her.</p>
           <p>Your actions, your mindset, your environment &mdash; reflecting Vision ever more deeply.</p>
         </div>
-        <p class="offering-for">For you if you want the spark and the structure. You&rsquo;re making a real change and you want someone in your corner while it takes hold.</p>
+        <p class="offering-for">For you if you want the spark and the structure. You&rsquo;re in the thick of a change and you want someone in your corner while the next chapter takes shape.</p>
       </div>
 
       <div class="offering-card reveal reveal-delay-3">
-        <p class="offering-label">12 Weeks</p>
+        <p class="offering-label">6 Months</p>
         <h3>The Full Season</h3>
         <div class="offering-body">
-          <p>The complete Alignment Method. All twelve weeks &mdash; more angles, more depth, more room for the work to take root.</p>
+          <p>The complete Alignment Method. Six full months &mdash; more angles, more depth, more room for the work to take root.</p>
           <p>Vision is at the head of the table. Navigate is how we keep her there. Deeper self-awareness. The patterns that keep surfacing, the self-sabotage you almost didn&rsquo;t catch, the integration that helps it stick.</p>
           <p>By the end, you Are her.</p>
         </div>
@@ -642,7 +663,8 @@ footer a:hover { color: var(--amber); }
 
 <!-- ── CTA / FORM ─────────────────────────────────────────────────── -->
 <section id="contact" class="cta-band">
-  <div class="wrap">
+  <div class="wrap-wide cta-layout">
+    <div class="cta-main">
     <h2 class="reveal">Ready to find out how<br>this can work for you?</h2>
     <p class="cta-sub reveal reveal-delay-1">Tell me a little about where you are. If it feels like a fit, I&rsquo;ll send you a link to book a Discovery Call.</p>
 
@@ -671,12 +693,12 @@ footer a:hover { color: var(--amber); }
       </div>
 
       <div class="form-group">
-        <label for="juicy-thing">What&rsquo;s your Juicy Thing?</label>
-        <input type="text" id="juicy-thing" name="juicy-thing" required placeholder="The thing that keeps pulling at you&hellip;" />
+        <label for="juicy-thing">What&rsquo;s shifting for you right now?</label>
+        <input type="text" id="juicy-thing" name="juicy-thing" required placeholder="A chapter closing, a restlessness, a curiosity&hellip;" />
       </div>
 
       <div class="form-group">
-        <label for="shift">What&rsquo;s the one thing you most want to shift?</label>
+        <label for="shift">What would feel like support right now?</label>
         <textarea id="shift" name="shift" required placeholder="No need to have it all figured out&hellip;"></textarea>
       </div>
 
@@ -686,6 +708,10 @@ footer a:hover { color: var(--amber); }
         </svg>
       </button>
     </form>
+    </div>
+    <div class="cta-photo reveal reveal-delay-2">
+      <img src="st-with-bubbles-in-field.jpg" alt="Shawn on a stool in a meadow, arms flung wide, laughing at floating bubbles" loading="lazy" />
+    </div>
   </div>
 </section>
 
